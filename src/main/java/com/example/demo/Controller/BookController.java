@@ -61,4 +61,15 @@ public class BookController {
 	{
 		return bookservice.Sellbooklist(id ,SellDto);
 	}
+	@GetMapping("/books")
+    public List<Book> getBookByCategoryKeyWord(@RequestParam String keyword,
+                                                  @RequestParam String category) {
+        return bookservice.getBookByCategoryKeyWord(keyword, category);
+    }
+	@GetMapping("/number-of-books")
+    public int getNumberOfBooksSoldByCategoryAndKeyword(@RequestParam String keyword,
+                                                        @RequestParam String category) {
+        return bookservice.getNumberOfBooksSoldByCategoryAndKeyword(keyword, category);
+    }
+
 }
