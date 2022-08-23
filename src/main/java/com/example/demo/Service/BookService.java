@@ -66,6 +66,11 @@ public class BookService {
 		list.add(TotalCount);
 		return list;	
 	}
-	
+	public List<Book> getBookByCategoryKeyWord(String keyword, String category) {
+		return bookrepo. findBookByKeywordAndCategory(keyword, category);
+	}
+	public int getNumberOfBooksSoldByCategoryAndKeyword(String keyword, String category) {
+		return bookrepo.countNumberOfBooksSold(keyword,category);
+	}
 	}
 	
