@@ -57,15 +57,20 @@ public class BookService {
 			return bookrepo.save(bookDto);
 		}
         }
-	public Book Sellbooklist(int id ,SellDto sellDto) {
-		Book b = bookrepo.findById(sellDto.getTotal()).orElseThrow(() -> new BookNotFoundException("Book with id: " + id + " is not found."));
-		List<Integer> list = new ArrayList<Integer>();
-		int idvalue = sellDto.getId();
-		list.add(id);
-		int TotalCount = sellDto.getTotal();
-		list.add(TotalCount);
-		return bookrepo.getById(id);	
-	}
+	 public void Sellbooklist(List<SellDto> sellDtos) {
+	        sellDtos.forEach(sellDto -> {
+	            Book book = bookrepo.findById(sellDto.getId())
+	                    .orElseThrow(() -> new BookNotFoundException("Book with id: " + sellDto.getId() + " is not found."));
+	            int totalCount = book.getTotal() - sellDto.getTotal();
+	            if (totalCount < 0) {
+	                throw new UnwantedException("No Enough Books");
+	            }
+	            int sold = book.getSold() + sellDto.getTotal();
+	            book.setTotal(totalCount);
+	            book.setSold(sold);
+	            bookrepo.save(book);
+	        });
+	 }
 	public List<Book> getBookByCategoryKeyWord(String keyword, String category) {
 		return bookrepo. findBookByKeywordAndCategory(keyword, category);
 	}
