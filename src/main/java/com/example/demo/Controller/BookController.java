@@ -57,7 +57,7 @@ public class BookController {
 	 return bookservice.updateBook(id, bookDto);
 }
 	@PutMapping("/Sell-books/{id}")
-	public List<Integer> Sellbooklist(@PathVariable ("id") int id ,@RequestBody SellDto SellDto)
+	public Book Sellbooklist(@PathVariable ("id") int id ,@RequestBody SellDto SellDto)
 	{
 		return bookservice.Sellbooklist(id ,SellDto);
 	}
