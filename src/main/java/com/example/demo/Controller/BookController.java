@@ -57,9 +57,9 @@ public class BookController {
 	 return bookservice.updateBook(id, bookDto);
 }
 	@PutMapping("/Sell-books/{id}")
-	public Book Sellbooklist(@PathVariable ("id") int id ,@RequestBody SellDto SellDto)
+	public void Sellbooklist(@RequestBody List<SellDto> SellDto)
 	{
-		return bookservice.Sellbooklist(id ,SellDto);
+	         bookservice.Sellbooklist(SellDto);
 	}
 	@GetMapping("/books")
     public List<Book> getBookByCategoryKeyWord(@RequestParam String keyword,
