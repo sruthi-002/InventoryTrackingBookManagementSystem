@@ -57,14 +57,14 @@ public class BookService {
 			return bookrepo.save(bookDto);
 		}
         }
-	public List<Integer> Sellbooklist(int id ,SellDto sellDto) {
+	public Book Sellbooklist(int id ,SellDto sellDto) {
 		Book b = bookrepo.findById(sellDto.getTotal()).orElseThrow(() -> new BookNotFoundException("Book with id: " + id + " is not found."));
 		List<Integer> list = new ArrayList<Integer>();
 		int idvalue = sellDto.getId();
 		list.add(id);
 		int TotalCount = sellDto.getTotal();
 		list.add(TotalCount);
-		return list;	
+		return bookrepo.getById(id);	
 	}
 	public List<Book> getBookByCategoryKeyWord(String keyword, String category) {
 		return bookrepo. findBookByKeywordAndCategory(keyword, category);
