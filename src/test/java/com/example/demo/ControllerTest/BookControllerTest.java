@@ -37,7 +37,7 @@ public class BookControllerTest {
     @MockBean
     private BookService bookservice;
     @Test
-    public void testAddBook() throws Exception {
+    public void testaddbook() throws Exception {
         String url = "/api/add-book/" + id + "/" + quantitytoadd;
         doNothing().when(bookservice).addbook(id, quantitytoadd);
         mockMvc.perform(MockMvcRequestBuilders
@@ -45,7 +45,7 @@ public class BookControllerTest {
                 .andExpect(status().isOk());
     }
     @Test
-    public void testGetNumberOfBooksById() throws Exception {
+    public void testgetnumberofbooks() throws Exception {
         String url = "/api/number-of-books/" + id;
         when(bookservice.getnumberofbooks(id)).thenReturn(totalCount);
         mockMvc.perform(MockMvcRequestBuilders
@@ -82,7 +82,7 @@ public class BookControllerTest {
     }
 
     @Test
-    public void testGetNumberOfBooksSoldByCategoryAndKeyword() throws Exception {
+    public void testgetNumberOfBooksSoldByCategoryAndKeyword() throws Exception {
         String url = "/api/number-of-books?"
                 + "keyword=" + keyword
                 + "&category=" + category;
