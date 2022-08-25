@@ -34,7 +34,7 @@ public class BookServiceTest {
     @InjectMocks
     private BookService bookservice;
     @Test
-    public void testAddNewBook() {
+    public void testaddnewbook() {
         Book books = mock(Book.class);
         Book book = mock(Book.class);
         when(books.getId()).thenReturn(id);
@@ -43,7 +43,7 @@ public class BookServiceTest {
         verify(bookrepo).save(book);
     }
     @Test
-    public void testAddBook() {
+    public void testaddbook() {
         Book book = mock(Book.class);
         when(bookrepo.findById(id)).thenReturn(Optional.ofNullable(book));
         when(book.getTotal()).thenReturn(totalCount);
@@ -51,7 +51,7 @@ public class BookServiceTest {
         verify(bookrepo).save(book);
     }
     @Test
-    public void testGetBookById() {
+    public void testgetbookbyid() {
         Book book = mock(Book.class);
         Book books = mock(Book.class);
         when(bookrepo.findById(id)).thenReturn(Optional.ofNullable(book));
@@ -59,7 +59,7 @@ public class BookServiceTest {
         assertEquals(book, booknew);
     }
     @Test
-    public void testGetAllBooks() {
+    public void testallbook() {
         Book book = mock(Book.class);
         List<Book> bookList = new ArrayList<>();
         bookList.add(book);
@@ -71,7 +71,7 @@ public class BookServiceTest {
         assertEquals(bookList1, list2);
     }
     @Test
-    public void testGetNumberOfBooksById() {
+    public void testgetnumberofbooks() {
         Book book = mock(Book.class);
         when(bookrepo.findById(id)).thenReturn(Optional.ofNullable(book));
         when(book.getTotal()).thenReturn(totalCount);
@@ -79,7 +79,7 @@ public class BookServiceTest {
         assertEquals(totalCount, num);
     }
     @Test
-    public void testUpdateBook() {
+    public void testupdateBook() {
         Book bookDto = mock(Book.class);
         Book book = mock(Book.class);
         when(bookDto.getId()).thenReturn(id);
@@ -90,7 +90,7 @@ public class BookServiceTest {
         verify(bookrepo).save(book);
     }
     @Test
-    public void testSellBook() {
+    public void testsellabook() {
         Book book = mock(Book.class);
         when(bookrepo.findById(id)).thenReturn(Optional.ofNullable(book));
         when(book.getTotal()).thenReturn(totalCount);
@@ -99,7 +99,7 @@ public class BookServiceTest {
         verify(bookrepo).save(book);
     }
     @Test
-    public void testGetBookByCategoryKeyword() {
+    public void testgetBookByCategoryKeyWord() {
         Book book = mock(Book.class);
         List<Book> books = new ArrayList<>();
         books.add(book);
@@ -109,7 +109,7 @@ public class BookServiceTest {
         assertEquals(book, booklist);
     }
     @Test
-    public void testGetNumberOfBooksSoldByCategoryAndKeyword() {
+    public void testgetNumberOfBooksSoldByCategoryAndKeyword() {
         Integer count = Integer.valueOf(totalCount);
         when(bookrepo.countNumberOfBooksSold(keyword.toLowerCase(), category)).thenReturn(count);
         int num = bookservice.getNumberOfBooksSoldByCategoryAndKeyword(keyword, category);
